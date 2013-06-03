@@ -71,3 +71,13 @@ fi
 # /virtualenv #
 ###############
 
+# Aliases
+if [[ -f "$HOME/.zsh_aliases" ]]; then
+    source $HOME/.zsh_aliases
+fi
+
+# Private aliases (that I don't want to check into version control)
+if [[ -f "$HOME/.zsh_private_aliases" ]]; then
+    source $HOME/.zsh_private_aliases
+fi
+
