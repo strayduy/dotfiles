@@ -71,6 +71,9 @@ fi
 # /virtualenv #
 ###############
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
 # Aliases
 if [[ -f "$HOME/.zsh_aliases" ]]; then
     source $HOME/.zsh_aliases
