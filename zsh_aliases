@@ -1,3 +1,4 @@
 alias ack="nocorrect ack "
 alias -r l="ls"
+alias -r fm="foreman start --port 8080"
 alias -r git-delete-local-merged-branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
