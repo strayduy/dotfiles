@@ -90,6 +90,18 @@ fi
 # /rbenv #
 ##########
 
+#######
+# npm #
+#######
+
+if [ -d "/usr/local/share/npm/bin" ]; then
+    export PATH="$PATH:/usr/local/share/npm/bin"
+fi
+
+########
+# /npm #
+########
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
