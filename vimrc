@@ -48,6 +48,10 @@ set laststatus=2
 " Clear search highlight with Enter
 nnoremap <CR> :noh<CR><CR>
 
+" Show whitespace characters as other characters
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
+
 " syntastic
 " Don't check syntax for HTML files
 let g:syntastic_ignore_files=['\.html$']
