@@ -45,6 +45,9 @@ set relativenumber
 " Show status bar
 set laststatus=2
 
+" Clear search highlight with Enter
+nnoremap <CR> :noh<CR><CR>
+
 " syntastic
 " Don't check syntax for HTML files
 let g:syntastic_ignore_files=['\.html$']
