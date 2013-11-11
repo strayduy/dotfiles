@@ -49,8 +49,11 @@ set laststatus=2
 nnoremap <CR> :noh<CR><CR>
 
 " Show whitespace characters as other characters
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+exec "set listchars=tab:\u25B8\\ ,trail:\uB7,nbsp:~"
 set list
+
+"Invisible character colors
+highlight SpecialKey ctermfg=234 guifg=#1c1c1c
 
 " syntastic
 " Don't check syntax for HTML files
