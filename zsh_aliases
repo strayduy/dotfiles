@@ -3,3 +3,6 @@ alias rake="nocorrect noglob rake"
 alias -r l="ls"
 alias -r fm="foreman start --port 8080"
 alias -r git-delete-local-merged-branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias -r git-prune-remote-branches="git remote prune origin"
+alias -r git-undo-last-commit="git reset --soft 'HEAD^'"
+alias -r gs="gst"
