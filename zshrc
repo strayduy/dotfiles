@@ -1,12 +1,13 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="cloud"
+ZSH_THEME="cloud-duy"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
