@@ -26,7 +26,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <F2> :NERDTreeToggle<CR>
 
 set background=dark
-"colorscheme wombat
 
 " Syntax highlighting
 syntax on
