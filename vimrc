@@ -78,3 +78,9 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Always open buffers in a new tab
+:au BufAdd,BufNewFile * nested tab sball
