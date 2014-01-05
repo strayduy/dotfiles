@@ -81,6 +81,8 @@ augroup END
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-
-" Always open buffers in a new tab
-:au BufAdd,BufNewFile * nested tab sball
+" CtrlP - Open buffers in new tab by default
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
