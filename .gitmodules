@@ -28,3 +28,6 @@
 [submodule "vim/bundle/rainbow_parentheses.vim"]
 	path = vim/bundle/rainbow_parentheses.vim
 	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "vim/bundle/vim-argumentative"]
+	path = vim/bundle/vim-argumentative
+	url = https://github.com/PeterRincker/vim-argumentative.git
