@@ -7,8 +7,8 @@ call pathogen#helptags()
 set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 filetype plugin indent on
 
-" Map <Leader> to comma
-let mapleader=","
+" Map <Leader> to spacebar
+let mapleader=" "
 
 " Nerdtree
 "autocmd VimEnter * NERDTree
