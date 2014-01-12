@@ -10,6 +10,9 @@ filetype plugin indent on
 " Map <Leader> to spacebar
 let mapleader=" "
 
+" Escape insert mode with jj
+:imap jj <Esc>
+
 " Nerdtree
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd p
