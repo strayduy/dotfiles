@@ -6,7 +6,10 @@ call pathogen#helptags()
  
 set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 filetype plugin indent on
- 
+
+" Map <Leader> to comma
+let mapleader=","
+
 " Nerdtree
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd p
@@ -86,3 +89,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+
+" Triggering EasyMotion with just <Leader> instead of <Leader><Leader>
+let g:EasyMotion_leader_key = '<Leader>'
