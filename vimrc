@@ -97,10 +97,10 @@ let g:ctrlp_prompt_mappings = {
 let g:EasyMotion_leader_key = '<Leader>'
 
 " Enabling Rainbow Parentheses by default
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+au VimEnter *.py RainbowParenthesesToggle
+au Syntax *.py RainbowParenthesesLoadRound
+au Syntax *.py RainbowParenthesesLoadSquare
+au Syntax *.py RainbowParenthesesLoadBraces
 
 " Changing the Rainbow Parentheses color order because I don't like having
 " to reddish colors in a row
