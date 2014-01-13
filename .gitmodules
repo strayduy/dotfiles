@@ -29,3 +29,6 @@
 	path = vim/bundle/vim-argumentative
 	url = https://github.com/PeterRincker/vim-argumentative.git
 	ignore = dirty
+[submodule "vim/bundle/vim-css-color"]
+	path = vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
