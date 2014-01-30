@@ -122,3 +122,9 @@ let g:rbpt_colorpairs = [
     \ ['darkcyan',    'SeaGreen3'],
     \ ['darkred',     'DarkOrchid3'],
     \ ]
+
+" For times when I hold down the shift key
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
