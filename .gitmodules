@@ -35,3 +35,4 @@
 [submodule "vim/bundle/vim-easyoperator-line"]
 	path = vim/bundle/vim-easyoperator-line
 	url = https://github.com/haya14busa/vim-easyoperator-line.git
+	ignore = dirty
