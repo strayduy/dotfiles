@@ -1,6 +1,6 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline
+	url = https://github.com/bling/vim-airline.git
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -34,4 +34,4 @@
 	url = https://github.com/ap/vim-css-color.git
 [submodule "vim/bundle/vim-easyoperator-line"]
 	path = vim/bundle/vim-easyoperator-line
-	url = https://github.com/haya14busa/vim-easyoperator-line
+	url = https://github.com/haya14busa/vim-easyoperator-line.git
