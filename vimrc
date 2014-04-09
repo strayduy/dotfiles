@@ -92,6 +92,11 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+" CtrlP - Don't index certain directories and file types
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|bower_components)$',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
+  \ }
 
 " Triggering EasyMotion with just <Leader> instead of <Leader><Leader>
 let g:EasyMotion_leader_key = '<Leader>'
