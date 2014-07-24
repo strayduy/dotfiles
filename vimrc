@@ -137,3 +137,7 @@ let g:rbpt_colorpairs = [
 " Centralized swap and backup directories
 set dir=~/.vim/swap//
 set backupdir=~/.vim/backup//
+
+" Control + Direction to Change Tabs
+noremap <C-l> gt
+noremap <C-h> gT
