@@ -32,6 +32,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <F2> :NERDTreeToggle<CR>
 
 set background=dark
+if has('gui_running')
+    colorscheme solarized
+endif
 
 " Syntax highlighting
 syntax on
