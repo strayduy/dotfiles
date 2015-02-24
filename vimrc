@@ -144,3 +144,7 @@ set backupdir=~/.vim/backup//
 " Control + Direction to Change Tabs
 noremap <C-l> gt
 noremap <C-h> gT
+
+" Move cursor by line naturally with k and j in navigation mode.
+nnoremap j gj
+nnoremap k gk
