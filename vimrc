@@ -148,3 +148,5 @@ noremap <C-h> gT
 " Move cursor by line naturally with k and j in navigation mode.
 nnoremap j gj
 nnoremap k gk
+
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
