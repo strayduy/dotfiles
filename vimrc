@@ -48,6 +48,8 @@ set tabstop=4
 
 " Except for HTML files, where tab width = 4 spaces
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
+autocmd FileType scss setlocal shiftwidth=2 tabstop=2
 
 " Highlight search terms
 set hlsearch
