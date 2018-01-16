@@ -143,6 +143,8 @@ let g:rbpt_colorpairs = [
 :command Wq wq
 :command W w
 :command Q q
+:command QA qa
+:command Qa qa
 
 " Centralized swap and backup directories
 set dir=~/.vim/swap//
