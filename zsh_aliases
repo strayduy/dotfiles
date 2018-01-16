@@ -1,5 +1,6 @@
 alias ack="nocorrect ack"
 alias rake="nocorrect noglob rake"
+alias rs="python manage.py runserver"
 alias fucking="sudo"
 alias -r l="ls"
 alias -r fm="foreman start --port 8080"
