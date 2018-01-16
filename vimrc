@@ -159,3 +159,7 @@ nnoremap j gj
 nnoremap k gk
 
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+
+" Enable modelines
+set modeline
+set modelines=5
