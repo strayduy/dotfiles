@@ -72,9 +72,14 @@ set list
 "Invisible character colors
 highlight SpecialKey ctermfg=234 guifg=#1c1c1c
 
-" syntastic
-" Don't check syntax for HTML files
-let g:syntastic_ignore_files=['\.html$']
+" ALE
+let b:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint']}
+
+" Only run linters named in ale_linters settings
+let g:ale_linters_explicit = 1
+
+" Show linting errors in airline
+let g:airline#extensions#ale#enabled = 1
 
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
