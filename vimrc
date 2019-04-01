@@ -52,6 +52,7 @@ autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2
+autocmd FileType stylus setlocal shiftwidth=2 tabstop=2
 
 " Highlight search terms
 set hlsearch
