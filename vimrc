@@ -125,7 +125,7 @@ au Syntax *.py RainbowParenthesesLoadSquare
 au Syntax *.py RainbowParenthesesLoadBraces
 
 " Changing the Rainbow Parentheses color order because I don't like having
-" to reddish colors in a row
+" two reddish colors in a row
 let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ['brown',       'RoyalBlue3'],
