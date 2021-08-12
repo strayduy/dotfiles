@@ -114,7 +114,7 @@ let g:ctrlp_prompt_mappings = {
 " CtrlP - Don't index certain directories and file types
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|node_modules|bower_components)$',
-  \ 'file': '\v\.(exe|so|dll|pyc|woff|woff2)$',
+  \ 'file': '\v\.(exe|so|dll|pyc|woff|woff2|png)$',
   \ }
 
 " Triggering EasyMotion with just <Leader> instead of <Leader><Leader>
