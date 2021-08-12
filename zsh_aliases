@@ -6,7 +6,10 @@ alias -r l="ls"
 alias -r fm="heroku local --port 8080"
 alias -r hl="heroku local --port 8080"
 alias -r git-delete-local-merged-branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias -r git-delete-local-squashed-and-merged-branches='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 alias -r git-prune-remote-branches="git remote prune origin"
 alias -r git-undo-last-commit="git reset --soft 'HEAD^'"
 alias -r gs="gst"
 alias -r grt='cd $(git rev-parse --show-toplevel)'
+alias -r ys="yarn start"
+alias -r n="nvim"
