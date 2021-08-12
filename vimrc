@@ -74,7 +74,8 @@ set list
 highlight SpecialKey ctermfg=234 guifg=#1c1c1c
 
 " ALE
-let b:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint', 'prettier'], 'typescript': ['eslint', 'prettier']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint']}
 
 " Only run linters named in ale_linters settings
 let g:ale_linters_explicit = 1
