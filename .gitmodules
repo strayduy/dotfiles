@@ -1,56 +1,6 @@
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/ctrlp.vim"]
-	path = vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/vim-easymotion"]
-	path = vim/bundle/vim-easymotion
-	url = https://github.com/Lokaltog/vim-easymotion.git
-[submodule "vim/bundle/rainbow_parentheses.vim"]
-	path = vim/bundle/rainbow_parentheses.vim
-	url = https://github.com/kien/rainbow_parentheses.vim.git
-[submodule "vim/bundle/vim-argumentative"]
-	path = vim/bundle/vim-argumentative
-	url = https://github.com/PeterRincker/vim-argumentative.git
-	ignore = dirty
-[submodule "vim/bundle/vim-css-color"]
-	path = vim/bundle/vim-css-color
-	url = https://github.com/ap/vim-css-color.git
-[submodule "vim/bundle/vim-easyoperator-line"]
-	path = vim/bundle/vim-easyoperator-line
-	url = https://github.com/haya14busa/vim-easyoperator-line.git
-	ignore = dirty
-[submodule "vim/bundle/vim-signature"]
-	path = vim/bundle/vim-signature
-	url = https://github.com/kshenoy/vim-signature.git
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vim-vue"]
-	path = vim/bundle/vim-vue
-	url = https://github.com/posva/vim-vue
 [submodule "oh-my-zsh-custom/plugins/zsh-nvm"]
 	path = oh-my-zsh-custom/plugins/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm
-[submodule "vim/bundle/typescript-vim"]
-	path = vim/bundle/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim
-[submodule "vim/bundle/ale"]
-	path = vim/bundle/ale
-	url = https://github.com/w0rp/ale
-[submodule "vim/bundle/vim-stylus"]
-	path = vim/bundle/vim-stylus
-	url = https://github.com/iloginow/vim-stylus
