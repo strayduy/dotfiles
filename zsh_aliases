@@ -1,4 +1,5 @@
 alias ack="nocorrect ack"
+alias ls="eza --long --git --color=always --icons=always --no-user --no-permissions --tree --level=2"
 alias -r l="ls"
 alias -r git-delete-local-merged-branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias -r git-delete-local-squashed-and-merged-branches='git checkout -q master && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
