@@ -1,6 +1,7 @@
 alias -r n="nvim"
-alias ls="eza --long --git --color=always --icons=always --no-user --no-permissions --tree --level=2"
+alias ls="eza --long --git --color=always --icons=always --no-user --no-permissions --tree --level=1"
 alias -r l="ls"
+alias -r ll="ls --level=2"
 alias -r gs="gst"
 alias -r grt='cd $(git rev-parse --show-toplevel)'
 alias -r git-delete-local-merged-branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
