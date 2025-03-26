@@ -13,6 +13,10 @@ keymap.set("n", "<CR>", ":noh<CR><CR>")
 -- When deleting chars with x, don't store deleted chars into register
 keymap.set("n", "x", '"_x')
 
+-- Intuitive vertical movement for wrapped text
+keymap.set("n", "j", "gj", { noremap = true })
+keymap.set("n", "k", "gk", { noremap = true })
+
 -- Save current buffer
 keymap.set("n", "<Leader>s", ":w<CR>", { desc = "Save current buffer" })
 

@@ -13,8 +13,8 @@ opt.shiftwidth = 4 -- 4 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
--- Disable line wrapping
-opt.wrap = false
+-- Enable break indent
+vim.opt.breakindent = true
 
 -- Highlight current cursor line
 opt.cursorline = true
