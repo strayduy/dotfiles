@@ -23,7 +23,9 @@ return {
             callback = function(ev)
                 local map = function(mode, lhs, rhs, desc)
                     keymap.set(mode, lhs, rhs, {
-                        { buffer = ev.buf, silent = true, desc = desc },
+                        buffer = ev.buf,
+                        silent = true,
+                        desc = desc,
                     })
                 end
 
@@ -47,7 +49,6 @@ return {
                 -- or a suggestion from your LSP for this to activate.
                 map({ "n", "x" }, "<Leader>ca", vim.lsp.buf.code_action, "See available [C]ode [A]ctions")
 
-                map("n", "K", vim.lsp.buf.hover, "Show documentation")
                 map("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
                 map("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
             end,
