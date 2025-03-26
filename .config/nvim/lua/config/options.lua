@@ -45,3 +45,18 @@ opt.splitbelow = true
 
 -- Turn off swapfile
 opt.swapfile = false
+
+-- Enable mouse mode, can be useful for resizing splits for example!
+opt.mouse = "a"
+
+-- Don't show the mode, since it's already in the status line
+opt.showmode = false
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Preview substitutions live, as you type!
+opt.inccommand = "split"
