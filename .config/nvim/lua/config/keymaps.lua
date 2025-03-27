@@ -18,12 +18,12 @@ keymap.set("n", "j", "gj", { noremap = true })
 keymap.set("n", "k", "gk", { noremap = true })
 
 -- Save current buffer
-keymap.set("n", "<Leader>s", ":w<CR>", { desc = "Save current buffer" })
+keymap.set("n", "<Leader>s", ":w<CR>", { desc = "[S]ave current buffer" })
 
 -- Window splits
-keymap.set("n", "<Leader>wv", "<C-w>v", { desc = "Create vertical split" })
-keymap.set("n", "<Leader>wh", "<C-w>s", { desc = "Create horizontal split" })
-keymap.set("n", "<Leader>wq", ":close<CR>", { desc = "Close current split window" })
+keymap.set("n", "<Leader>Sv", "<C-w>v", { desc = "[S]plit [V]ertically" })
+keymap.set("n", "<Leader>Sh", "<C-w>s", { desc = "[S]plit [H]orizontally" })
+keymap.set("n", "<Leader>Sq", ":close<CR>", { desc = "[S]plit [Q]uit" })
 
 -- Easier navigation between splits
 keymap.set("n", "<C-j>", "<C-w><C-j>")
