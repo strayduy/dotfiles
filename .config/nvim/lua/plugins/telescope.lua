@@ -31,6 +31,7 @@ return {
         keymap.set("n", "<Leader>ff", "<CMD>Telescope find_files<CR>", { desc = "[F]ind [F]iles in cwd" })
         keymap.set("n", "<Leader>fr", "<CMD>Telescope oldfiles<CR>", { desc = "[F]ind [R]ecent files" })
         keymap.set("n", "<Leader>fs", "<CMD>Telescope live_grep<CR>", { desc = "[F]ind [S]tring in cwd" })
+        keymap.set("n", "<Leader>fb", "<CMD>Telescope buffers<CR>", { desc = "[F]ind file within [B]uffer" })
         keymap.set(
             "n",
             "<Leader>fc",
