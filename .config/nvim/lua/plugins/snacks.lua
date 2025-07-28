@@ -8,7 +8,6 @@ return {
         indent = { char = "┊", scope = { char = "┊" } },
         lazygit = { enabled = true },
         notifier = { enabled = true },
-        terminal = { enabled = true },
     },
     keys = {
         {
