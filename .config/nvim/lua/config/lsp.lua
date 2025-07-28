@@ -22,16 +22,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
             })
         end
 
-        -- Jump to the definition of the word under your cursor.
-        map("n", "gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-        -- Find references for the word under your cursor.
-        map("n", "gR", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-
-        -- Jump to the implementation of the word under your cursor.
-        -- Useful when your language has ways of declaring types without an actual implementation.
-        map("n", "gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-
         -- Rename the symbol under your cursor.
         map("n", "<Leader>rn", vim.lsp.buf.rename, "[R]e[n]ame symbol")
 
