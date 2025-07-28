@@ -24,5 +24,13 @@ return {
             end,
             desc = "Open [T]erminal",
         },
+        {
+            "<Leader>gB",
+            function()
+                Snacks.gitbrowse()
+            end,
+            desc = "[G]it [B]rowse",
+            mode = { "n", "v" },
+        },
     },
 }
