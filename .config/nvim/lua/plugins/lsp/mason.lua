@@ -40,7 +40,9 @@ return {
         mason_tool_installer.setup({
             ensure_installed = {
                 "black", -- python formatter
-                "eslint_d", -- js linter
+                -- Pin eslint_d to a specific version to avoid this issue:
+                -- https://github.com/mfussenegger/nvim-lint/issues/462#issuecomment-2504521215
+                { "eslint_d", version = "13.1.2" }, -- js linter
                 "isort", -- python formatter
                 "prettier", -- prettier formatter
                 "pylint", -- python linter
