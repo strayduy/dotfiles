@@ -30,3 +30,17 @@ keymap.set("n", "<C-j>", "<C-w><C-j>")
 keymap.set("n", "<C-k>", "<C-w><C-k>")
 keymap.set("n", "<C-l>", "<C-w><C-l>")
 keymap.set("n", "<C-h>", "<C-w><C-h>")
+
+-- Move selected lines up and down in visual mode
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Keep selected line centered when jumping around in a buffer
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "n", "nzz")
+keymap.set("n", "N", "Nzz")
+
+-- Cycle through buffers
+keymap.set("n", "<S-Left>", ":bp<CR>")
+keymap.set("n", "<S-Right>", ":bn<CR>")
