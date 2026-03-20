@@ -1,0 +1,30 @@
+format = """
+$time\
+[](fg:#a3aed2 bg:#769ff0)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260 bg:#212736)\
+\n$character"""
+
+[directory]
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+
+[git_status]
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+[time]
+disabled = false
+time_format = "%l:%M%P" # 12-hour format with am/pm
+style = "bg:#a3aed2"
+format = '[[  $time ](fg:#090c0c bg:#a3aed2)]($style)'

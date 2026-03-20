@@ -7,7 +7,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cloud-duy"
+#ZSH_THEME="cloud-duy"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -98,6 +98,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
+# shell-color-scripts
+export SHELL_COLOR_SCRIPTS_ROOT="$HOME/.shell-color-scripts"
+export PATH="$SHELL_COLOR_SCRIPTS_ROOT/bin:$PATH"
+
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -114,3 +118,4 @@ if [[ -f "$HOME/.zsh_private_exports" ]]; then
     source $HOME/.zsh_private_exports
 fi
 
+eval "$(starship init zsh)"
