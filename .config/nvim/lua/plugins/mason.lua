@@ -32,8 +32,8 @@ return {
                 "html",
                 "lua_ls",
                 "prismals",
-                "pyright",
                 "ts_ls",
+                "ty",
             },
         })
 
