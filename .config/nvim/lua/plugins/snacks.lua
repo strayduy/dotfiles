@@ -16,6 +16,7 @@ return {
                 },
             },
         },
+        words = { enabled = true },
     },
     keys = {
         {
