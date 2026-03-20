@@ -4,15 +4,6 @@ vim.lsp.enable("ts_ls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
-        -- Enable LSP completion
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client:supports_method("textDocument/completion") then
-            -- Completion options:
-            -- https://neovim.io/doc/user/options.html#'completeopt'
-            vim.opt.completeopt = { "menu", "menuone", "noselect" }
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        end
-
         -- Set up keymaps for LSP-related actions
         local map = function(mode, lhs, rhs, desc)
             vim.keymap.set(mode, lhs, rhs, {
