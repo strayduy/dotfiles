@@ -16,8 +16,5 @@ return {
                 separator_style = "slant",
             },
         })
-
-        vim.keymap.set("n", "[b", ":bp<CR>", { desc = "Go to previous buffer" })
-        vim.keymap.set("n", "]b", ":bn<CR>", { desc = "Go to next buffer" })
     end,
 }
