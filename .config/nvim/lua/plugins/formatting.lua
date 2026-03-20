@@ -19,19 +19,37 @@ return {
                 typescriptreact = { "prettier" },
                 yaml = { "prettier" },
             },
-            format_on_save = {
-                lsp_fallback = true,
-                async = false,
-                timeout_ms = 1000,
-            },
+            format_on_save = function()
+                if vim.g.disable_autoformat then
+                    return
+                end
+
+                return {
+                    lsp_fallback = true,
+                    async = false,
+                    timeout_ms = 1000,
+                }
+            end,
         })
 
-        vim.keymap.set({ "n", "v" }, "<Leader>pp", function()
+        vim.keymap.set({ "n", "v" }, "<Leader>F", function()
             conform.format({
                 lsp_fallback = true,
                 async = false,
                 timeout_ms = 1000,
             })
-        end, { desc = "Format file or range (in visual mode)" })
+        end, { desc = "[F]ormat file or visual range" })
+
+        vim.api.nvim_create_user_command("FormatDisable", function()
+            vim.g.disable_autoformat = true
+        end, {
+            desc = "Disable autoformat-on-save",
+        })
+
+        vim.api.nvim_create_user_command("FormatEnable", function()
+            vim.g.disable_autoformat = false
+        end, {
+            desc = "Re-enable autoformat-on-save",
+        })
     end,
 }
