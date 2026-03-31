@@ -88,3 +88,5 @@ if [[ -f "$HOME/.zsh_private_exports" ]]; then
 fi
 
 eval "$(starship init zsh)"
+
+eval "$(zoxide init zsh --cmd j)"
