@@ -1,0 +1,30 @@
+# Enable zsh completion system
+autoload -Uz compinit
+compinit
+
+# History configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
+# Disable auto-setting terminal title
+DISABLE_AUTO_TITLE="true"
+
+# zsh-syntax-highlighting
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh-autosuggestions
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Private exports (that I don't want to check into version control)
+if [[ -f "$HOME/.zsh_private_exports" ]]; then
+    source $HOME/.zsh_private_exports
+fi
+
+# Source all the modules in the config directory
+for f in $ZDOTDIR/config/*.zsh; do source $f; done
