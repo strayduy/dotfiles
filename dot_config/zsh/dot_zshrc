@@ -12,6 +12,9 @@ setopt incappendhistory
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
+# Enable reverse history search with Ctrl+R
+bindkey "^R" history-incremental-search-backward
+
 # Disable auto-setting terminal title
 DISABLE_AUTO_TITLE="true"
 
