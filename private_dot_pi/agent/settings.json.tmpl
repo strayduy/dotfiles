@@ -1,0 +1,33 @@
+{
+  "//": "Pi global settings. Rendered to ~/.pi/agent/settings.json. Docs: https://pi.dev (see docs/settings.md in the pi-coding-agent npm package).",
+  "//-": "Paths in this file resolve relative to ~/.pi/agent. ~ and absolute paths are also supported.",
+
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-sonnet-4-20250514",
+  "defaultThinkingLevel": "medium",
+
+  "theme": "dark",
+
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 16384,
+    "keepRecentTokens": 20000
+  },
+
+  "retry": {
+    "enabled": true,
+    "maxRetries": 3
+  },
+
+  {{- /* Use the mise-managed node for any npm operations Pi performs
+         (package installs, git-package deps, etc.). Matches this repo's
+         convention of managing node via mise. */}}
+  "npmCommand": ["mise", "exec", "node@lts", "--", "npm"],
+
+  "extensions": ["extensions"],
+  "skills":     ["skills"],
+  "prompts":    ["prompts"],
+  "themes":     ["themes"],
+
+  "packages": []
+}

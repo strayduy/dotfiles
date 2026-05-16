@@ -39,6 +39,16 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 │       and apt + upstream installers on Ubuntu/Debian.
 ├── run_once_after_20-install-mise-tools.sh.tmpl
 │       Installs language runtimes (Node, Python, Bun) via mise.
+├── run_once_after_30-install-pi.sh.tmpl
+│       Installs the Pi coding agent (`@earendil-works/pi-coding-agent`)
+│       globally via mise's node@lts.
+├── private_dot_pi/                         → ~/.pi/ (mode 0700)
+│   └── agent/
+│       ├── settings.json.tmpl              global Pi settings
+│       ├── extensions/                     local Pi extensions
+│       ├── skills/                         local Pi skills
+│       ├── prompts/                        local Pi prompt templates
+│       └── themes/                         local Pi themes
 └── dot_config/                             → ~/.config/
     ├── zsh/
     │   ├── dot_zshrc                       → ~/.config/zsh/.zshrc
@@ -123,6 +133,30 @@ We use [mise](https://mise.jdx.dev/dev-tools/) instead of `nvm`/`pyenv`/etc.
 - Number scripts (`10-`, `20-`, ...) so insertion order is obvious; chezmoi
   runs `run_once_before_` scripts in lex order, then files, then
   `run_once_after_` scripts.
+
+## Pi coding agent
+
+[Pi](https://pi.dev) global config lives at `~/.pi/agent/` and is managed here
+as `private_dot_pi/agent/` (chezmoi `private_` keeps the dir at mode `0700`,
+appropriate since it sits next to credentials).
+
+- **Settings:** `private_dot_pi/agent/settings.json.tmpl` → `~/.pi/agent/settings.json`.
+  Edit this file to change model defaults, theme, retry/compaction, etc.
+  Paths inside it resolve relative to `~/.pi/agent`.
+- **Local resources:** drop custom extensions/skills/prompts/themes into the
+  matching subdirectory; `settings.json` already lists each by name.
+- **Reusable bundles:** prefer publishing as an npm/git package and adding it
+  to `settings.json`'s `packages` array (see `docs/packages.md` shipped with
+  the npm package) over vendoring lots of files here.
+- **Not tracked:** `~/.pi/agent/auth.json` (credentials) and `~/.pi/agent/sessions/`
+  (conversation history) are deliberately not in this repo. chezmoi only
+  manages files that exist in source, so it won't touch them.
+- **Project-scoped overrides** go in `<project>/.pi/settings.json` and should
+  be committed to *that project's* repo, not this dotfiles repo.
+- **Install:** `run_once_after_30-install-pi.sh.tmpl` does
+  `mise exec node@lts -- npm install -g @earendil-works/pi-coding-agent`.
+  Bump its `pi-revision:` comment to force a reinstall/upgrade on the next
+  `chezmoi apply`.
 
 ## Known quirks
 

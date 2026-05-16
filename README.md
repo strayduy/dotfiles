@@ -14,6 +14,9 @@ My personal dotfiles, managed by [chezmoi](https://www.chezmoi.io/). Works on
 - **Multiplexer** — `tmux.conf`.
 - **Runtimes** — [mise](https://mise.jdx.dev/) manages Node, Python, Bun, etc.
   Tools are declared in `dot_config/mise/config.toml`.
+- **AI coding agent** — [Pi](https://pi.dev) global config under
+  `private_dot_pi/agent/` (settings, custom skills/extensions/prompts/themes).
+  Installed automatically via mise's node.
 - **macOS extras** — [Aerospace](https://github.com/nikitabobko/AeroSpace)
   (tiling WM), [SketchyBar](https://github.com/FelixKratz/SketchyBar) (status
   bar), [JankyBorders](https://github.com/FelixKratz/JankyBorders).
@@ -35,6 +38,8 @@ That's it. chezmoi will:
 2. Render every `dot_*` / `exact_*` source path into `$HOME`.
 3. Run `run_once_after_20-install-mise-tools.sh` — `mise install` to set up
    the language runtimes declared in `dot_config/mise/config.toml`.
+4. Run `run_once_after_30-install-pi.sh` — `npm install -g` the
+   [Pi coding agent](https://pi.dev) using the mise-managed node.
 
 Open a new shell when it finishes so the updated `PATH` is picked up.
 
@@ -74,6 +79,24 @@ Append to the relevant array in
   for tools not packaged on Ubuntu LTS)
 
 Then `chezmoi apply` — chezmoi notices the script changed and re-runs it.
+
+## Customizing the Pi coding agent
+
+Pi's global config lives at `~/.pi/agent/`, managed here as
+`private_dot_pi/agent/`:
+
+- Edit `private_dot_pi/agent/settings.json.tmpl` for model defaults, theme,
+  retry/compaction, etc. See `docs/settings.md` in the
+  `@earendil-works/pi-coding-agent` npm package for the full schema.
+- Drop custom extensions / skills / prompt templates / themes into the
+  matching subdirectory — `settings.json` already references them by name.
+- Project-scoped overrides go in `<project>/.pi/settings.json` and belong in
+  *that project's* repo, not this one.
+- Credentials (`~/.pi/agent/auth.json`) and conversation history
+  (`~/.pi/agent/sessions/`) are intentionally not tracked.
+
+To upgrade Pi, bump the `pi-revision:` comment in
+`run_once_after_30-install-pi.sh.tmpl` and run `chezmoi apply`.
 
 ## Layout
 
