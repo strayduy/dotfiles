@@ -1,0 +1,40 @@
+# Global gitignore. Things that should never be committed from any repo on
+# this machine. Project-specific ignores still belong in each repo's
+# .gitignore.
+
+# OS cruft
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.netrwhist
+.vscode/
+.idea/
+*.iml
+.nvim.lua
+.luarc.json.user
+
+# Direnv / env
+.envrc.local
+.env.local
+
+# Build noise that escapes project .gitignores
+*.log
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# macOS Spotlight / Fseventsd
+.Spotlight-V100
+.Trashes
+.fseventsd

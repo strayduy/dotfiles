@@ -1,0 +1,89 @@
+; Managed by chezmoi: dot_config/git/config.tmpl → ~/.config/git/config
+; Per-machine overrides go in ~/.config/git/config.local (not tracked).
+
+[user]
+    name  = {{ .name  | quote }}
+    email = {{ .email | quote }}
+{{- if .signingkey }}
+    signingkey = {{ .signingkey }}
+
+[commit]
+    gpgsign = true
+[tag]
+    gpgsign = true
+{{- /* SSH-format signing keys start with "ssh-" or "ecdsa-"/"sk-". */ -}}
+{{- if or (hasPrefix "ssh-" .signingkey) (hasPrefix "sk-" .signingkey) (hasPrefix "ecdsa-" .signingkey) }}
+[gpg]
+    format = ssh
+{{- end }}
+{{- end }}
+
+[core]
+    excludesfile = ~/.config/git/ignore
+    pager        = {{ if lookPath "delta" }}delta{{ else }}less -FRX{{ end }}
+    autocrlf     = input
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+[fetch]
+    prune     = true
+    pruneTags = true
+[push]
+    default       = simple
+    autoSetupRemote = true
+[rebase]
+    autoStash  = true
+    autoSquash = true
+[merge]
+    conflictStyle = zdiff3
+[diff]
+    algorithm     = histogram
+    colorMoved    = default
+    mnemonicPrefix = true
+[rerere]
+    enabled = true
+[branch]
+    sort = -committerdate
+[column]
+    ui = auto
+[help]
+    autocorrect = prompt
+
+{{ if lookPath "delta" -}}
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate    = true
+    line-numbers = true
+    syntax-theme = ansi
+[merge]
+    tool = nvim
+[mergetool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+{{ end -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
+[credential]
+    helper = osxkeychain
+{{ else -}}
+[credential]
+    helper = cache --timeout=3600
+{{ end }}
+[alias]
+    ; Compact, useful aliases. Shell-level shortcuts (gst, gco, ...) live in
+    ; ~/.config/zsh/config/aliases.zsh; keep this list to things that only
+    ; make sense as git subcommands.
+    lg   = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+    last = log -1 HEAD --stat
+    unstage = reset HEAD --
+    amend   = commit --amend --no-edit
+    wip     = commit -am "wip"
+    root    = rev-parse --show-toplevel
+
+; Machine-local overrides (corp email, alt signing key, etc.). Optional;
+; git silently ignores missing includes.
+[include]
+    path = ~/.config/git/config.local

@@ -1,0 +1,17 @@
+{{/*
+   Rendered by `chezmoi init` into ~/.config/chezmoi/chezmoi.toml on each
+   machine. Values prompted here are available as `.name`, `.email`, etc.
+   inside other templates (e.g. dot_config/git/config.tmpl).
+
+   This file itself is NOT applied to $HOME; chezmoi reads it once at init
+   time. To re-prompt later, run `chezmoi init` again (it will overwrite
+   ~/.config/chezmoi/chezmoi.toml) or edit that file directly.
+*/ -}}
+{{- $name       := promptStringOnce . "name"       "Full name for git commits" -}}
+{{- $email      := promptStringOnce . "email"      "Email for git commits" -}}
+{{- $signingkey := promptStringOnce . "signingkey" "Git signing key (SSH pubkey or GPG key id; blank to disable)" "" -}}
+
+[data]
+    name       = {{ $name       | quote }}
+    email      = {{ $email      | quote }}
+    signingkey = {{ $signingkey | quote }}
