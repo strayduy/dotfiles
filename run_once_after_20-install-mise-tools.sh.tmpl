@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#
+# Installs all language runtimes declared in ~/.config/mise/config.toml.
+#
+# The list of tools is declarative — edit `dot_config/mise/config.toml` to add
+# or remove runtimes; this script just asks mise to realize that config.
+#
+# Re-runs whenever this file's contents change. To force re-run after editing
+# only the mise config, bump the comment below.
+#
+# mise-config-revision: 1
+
+set -euo pipefail
+
+log() { printf '\033[1;34m[mise-tools]\033[0m %s\n' "$*"; }
+
+# Locate mise. The installer drops it under ~/.local/bin on Linux; Homebrew
+# puts it on PATH on macOS.
+if ! command -v mise >/dev/null 2>&1; then
+    if [[ -x "$HOME/.local/bin/mise" ]]; then
+        export PATH="$HOME/.local/bin:$PATH"
+    else
+        echo "mise is not installed; the package install script should have installed it." >&2
+        exit 1
+    fi
+fi
+
+log "mise version: $(mise --version)"
+log "Installing tools from ~/.config/mise/config.toml ..."
+mise install --yes
+
+log "Reshimming..."
+mise reshim || true
+
+log "Installed tools:"
+mise ls

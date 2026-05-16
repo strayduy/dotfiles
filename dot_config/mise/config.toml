@@ -1,0 +1,15 @@
+# Global mise configuration.
+# Docs: https://mise.jdx.dev/configuration.html
+#
+# Tools listed here are installed by `mise install` (run automatically by the
+# `run_once_after_` chezmoi script on a fresh machine). Per-project versions
+# can still override these via a local `mise.toml` or `.tool-versions` file.
+
+[tools]
+node   = "lts"
+python = "latest"
+bun    = "latest"
+
+[settings]
+# Don't prompt when installing new tool versions during automated bootstraps.
+yes = true
