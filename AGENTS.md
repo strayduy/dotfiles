@@ -42,6 +42,9 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 ├── run_once_after_30-install-pi.sh.tmpl
 │       Installs the Pi coding agent (`@earendil-works/pi-coding-agent`)
 │       globally via mise's node@lts.
+├── run_once_after_40-set-default-shell.sh.tmpl
+│       `chsh` the current user to zsh if they aren't already on it
+│       (chezmoi never touches /etc/passwd on its own).
 ├── private_dot_pi/                         → ~/.pi/ (mode 0700)
 │   └── agent/
 │       ├── settings.json.tmpl              global Pi settings
@@ -98,6 +101,11 @@ The run-once scripts in order:
 3. `run_once_after_20-install-mise-tools.sh.tmpl`
    - Runs `mise install` to realize the runtimes declared in
      `~/.config/mise/config.toml`.
+4. `run_once_after_30-install-pi.sh.tmpl` installs the Pi agent.
+5. `run_once_after_40-set-default-shell.sh.tmpl` switches the login shell
+   to zsh via `sudo chsh` (Linux) or `chsh` (macOS). Idempotent; no-ops
+   if `getent passwd $USER` already reports zsh. Requires a re-login to
+   take effect.
 
 Re-run any time with `chezmoi apply`. Scripts only re-execute when their
 content changes (chezmoi tracks them by SHA256).
