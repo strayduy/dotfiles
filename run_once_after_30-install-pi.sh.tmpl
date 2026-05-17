@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# Installs the Pi coding agent (https://pi.dev) globally using the
+# mise-managed Node runtime. Runs after `20-install-mise-tools` so that
+# `node@lts` is guaranteed to exist.
+#
+# Re-runs whenever this file's contents change. Bump the revision comment
+# below to force a reinstall/upgrade on the next `chezmoi apply`.
+#
+# pi-revision: 1
+
+set -euo pipefail
+
+log()  { printf '\033[1;34m[install-pi]\033[0m %s\n' "$*"; }
+warn() { printf '\033[1;33m[install-pi]\033[0m %s\n' "$*" >&2; }
+
+PI_PACKAGE="@earendil-works/pi-coding-agent"
+
+if ! command -v mise >/dev/null 2>&1; then
+    if [[ -x "$HOME/.local/bin/mise" ]]; then
+        export PATH="$HOME/.local/bin:$PATH"
+    else
+        warn "mise not found; cannot install Pi. Re-run after the package install script."
+        exit 0
+    fi
+fi
+
+# Use mise's node@lts so the install lands in a runtime we control, and the
+# `pi` shim ends up on PATH via mise's shims.
+log "Installing/updating ${PI_PACKAGE} via mise node@lts ..."
+mise exec node@lts -- npm install -g "${PI_PACKAGE}"
+
+# Reshim so the `pi` binary becomes visible without restarting the shell.
+mise reshim || true
+
+if command -v pi >/dev/null 2>&1; then
+    log "Installed: $(pi --version 2>/dev/null || echo 'pi (version unknown)')"
+else
+    warn "Pi installed but 'pi' is not on PATH yet. Open a new shell or run 'mise reshim'."
+fi
