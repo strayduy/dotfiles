@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+  "name": "tokyonight",
+  "//": "Tokyo Night (Night variant). Palette from folke/tokyonight.nvim.",
+
+  "vars": {
+    "bg":            "#1a1b26",
+    "bgDark":        "#16161e",
+    "bgHighlight":   "#292e42",
+    "bgFloat":       "#1f2335",
+    "fg":            "#c0caf5",
+    "fgDark":        "#a9b1d6",
+    "fgGutter":      "#3b4261",
+    "comment":       "#565f89",
+    "dark3":         "#545c7e",
+    "dark5":         "#737aa2",
+    "blue":          "#7aa2f7",
+    "cyan":          "#7dcfff",
+    "blue1":         "#2ac3de",
+    "blue5":         "#89ddff",
+    "magenta":       "#bb9af7",
+    "purple":        "#9d7cd8",
+    "orange":        "#ff9e64",
+    "yellow":        "#e0af68",
+    "green":         "#9ece6a",
+    "teal":          "#73daca",
+    "red":           "#f7768e",
+    "red1":          "#db4b4b",
+
+    "toolPendingBg": "#1f2335",
+    "toolSuccessBg": "#1c2620",
+    "toolErrorBg":   "#2a1b22"
+  },
+
+  "colors": {
+    "accent":              "blue",
+    "border":              "fgGutter",
+    "borderAccent":        "blue",
+    "borderMuted":         "comment",
+    "success":             "green",
+    "error":               "red",
+    "warning":             "yellow",
+    "muted":               "fgDark",
+    "dim":                 "comment",
+    "text":                "",
+    "thinkingText":        "dark5",
+
+    "selectedBg":          "bgHighlight",
+    "userMessageBg":       "bgFloat",
+    "userMessageText":     "",
+    "customMessageBg":     "bgFloat",
+    "customMessageText":   "",
+    "customMessageLabel":  "magenta",
+    "toolPendingBg":       "toolPendingBg",
+    "toolSuccessBg":       "toolSuccessBg",
+    "toolErrorBg":         "toolErrorBg",
+    "toolTitle":           "blue",
+    "toolOutput":          "",
+
+    "mdHeading":           "magenta",
+    "mdLink":              "blue",
+    "mdLinkUrl":           "cyan",
+    "mdCode":              "teal",
+    "mdCodeBlock":         "",
+    "mdCodeBlockBorder":   "fgGutter",
+    "mdQuote":             "fgDark",
+    "mdQuoteBorder":       "purple",
+    "mdHr":                "comment",
+    "mdListBullet":        "orange",
+
+    "toolDiffAdded":       "green",
+    "toolDiffRemoved":     "red",
+    "toolDiffContext":     "comment",
+
+    "syntaxComment":       "comment",
+    "syntaxKeyword":       "magenta",
+    "syntaxFunction":      "blue",
+    "syntaxVariable":      "fg",
+    "syntaxString":        "green",
+    "syntaxNumber":        "orange",
+    "syntaxType":          "cyan",
+    "syntaxOperator":      "blue5",
+    "syntaxPunctuation":   "dark5",
+
+    "thinkingOff":         "comment",
+    "thinkingMinimal":     "dark5",
+    "thinkingLow":         "blue",
+    "thinkingMedium":      "cyan",
+    "thinkingHigh":        "magenta",
+    "thinkingXhigh":       "red1",
+
+    "bashMode":            "orange"
+  },
+
+  "export": {
+    "pageBg":  "#1a1b26",
+    "cardBg":  "#1f2335",
+    "infoBg":  "#292e42"
+  }
+}
