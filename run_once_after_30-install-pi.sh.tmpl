@@ -27,8 +27,12 @@ fi
 
 # Use mise's node@lts so the install lands in a runtime we control, and the
 # `pi` shim ends up on PATH via mise's shims.
+#
+# --min-release-age=3 refuses any package version published less than 3 days
+# ago, providing a basic supply-chain attack mitigation (e.g. typosquatting,
+# compromised publish). npm will error if no qualifying version exists.
 log "Installing/updating ${PI_PACKAGE} via mise node@lts ..."
-mise exec node@lts -- npm install -g "${PI_PACKAGE}"
+mise exec node@lts -- npm install -g --min-release-age=3 "${PI_PACKAGE}"
 
 # Reshim so the `pi` binary becomes visible without restarting the shell.
 mise reshim || true
