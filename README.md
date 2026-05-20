@@ -24,14 +24,26 @@ My personal dotfiles, managed by [chezmoi](https://www.chezmoi.io/). Works on
 ## Install on a fresh machine
 
 ```sh
-# 1. Install chezmoi
-sh -c "$(curl -fsLS get.chezmoi.io)"
-
-# 2. Pull this repo and apply it
-chezmoi init --apply <your-github-username>/dotfiles
+# Install chezmoi to ~/.local/bin, pull this repo, and apply it — all in one shot.
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply $GITHUB_USERNAME
 ```
 
-That's it. chezmoi will:
+Replace `$GITHUB_USERNAME` with your GitHub username (or pass it literally —
+the variable is just a placeholder).
+
+Once chezmoi finishes, point the local source repo at your own remote:
+
+```sh
+chezmoi cd
+git remote set-url origin $GIT_REMOTE_URL
+```
+
+Replace `$GIT_REMOTE_URL` with the actual remote URL, e.g.
+`git@github.com:yourname/dotfiles.git`.
+
+Open a new shell when everything finishes so the updated `PATH` is picked up.
+
+chezmoi will:
 
 1. Run `run_once_before_10-install-packages.sh` — installs system packages
    via Homebrew (macOS) or apt + upstream installers (Ubuntu/Debian).
@@ -40,8 +52,6 @@ That's it. chezmoi will:
    the language runtimes declared in `dot_config/mise/config.toml`.
 4. Run `run_once_after_30-install-pi.sh` — `npm install -g` the
    [Pi coding agent](https://pi.dev) using the mise-managed node.
-
-Open a new shell when it finishes so the updated `PATH` is picked up.
 
 ## Day-to-day
 
