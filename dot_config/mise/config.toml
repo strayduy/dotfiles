@@ -9,6 +9,7 @@
 node   = "lts"
 python = "latest"
 bun    = "latest"
+rust   = "latest"
 
 [settings]
 # Don't prompt when installing new tool versions during automated bootstraps.
