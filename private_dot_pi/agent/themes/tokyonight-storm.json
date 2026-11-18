@@ -1,8 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+  "$schema": "https://pi.dev/schemas/theme.schema.json",
   "name": "tokyonight-storm",
-  "//": "Tokyo Night (Storm variant). Palette from folke/tokyonight.nvim.",
-  "//2": "Storm has lighter backgrounds than Night (#24283b vs #1a1b26) for higher fg contrast.",
+  "appearance": "dark",
 
   "vars": {
     "bg":            "#24283b",
