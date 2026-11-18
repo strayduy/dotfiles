@@ -11,6 +11,10 @@ python = "latest"
 bun    = "latest"
 rust   = "latest"
 
+# CLI tools
+# hunk: diff review TUI; required by the `hunk-review` agent skill.
+"github:modem-dev/hunk" = "latest"
+
 [settings]
 # Don't prompt when installing new tool versions during automated bootstraps.
 yes = true

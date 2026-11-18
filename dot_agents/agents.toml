@@ -1,0 +1,32 @@
+# Global agent skills, managed by dotagents (https://github.com/getsentry/dotagents).
+# Rendered to ~/.agents/agents.toml by chezmoi. Skills install into
+# ~/.agents/skills/, which Pi reads natively.
+#
+# `run_onchange_after_50-dotagents-install.sh` runs `dotagents install`
+# whenever this file changes. If you use `dotagents add/remove` directly,
+# copy the change back with `chezmoi re-add ~/.agents/agents.toml`.
+#
+# Unpinned sources track the default branch; append `@<ref>` to pin.
+
+version = 1
+agents = ["pi"]
+
+# dotagents' own skill: teaches agents how to edit this file.
+[[skills]]
+name = "dotagents"
+source = "getsentry/dotagents"
+
+# Pinned to the original standalone version. Later commits turned it into a
+# pointer to a separate `grilling` skill via Claude's Skill tool.
+# `path` is required: mattpocock/skills is a Claude plugin repo, so
+# dotagents' plugin auto-detection would otherwise reject it.
+[[skills]]
+name = "grill-me"
+source = "mattpocock/skills@62f43a18177be6ec82da242e59ffbc490a4c22ea"
+path = "skills/productivity/grill-me"
+
+# Pointer skill; real instructions come from the `hunk` CLI (installed via
+# mise, see dot_config/mise/config.toml).
+[[skills]]
+name = "hunk-review"
+source = "modem-dev/hunk"

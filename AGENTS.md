@@ -45,11 +45,17 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 ├── run_once_after_40-set-default-shell.sh.tmpl
 │       `chsh` the current user to zsh if they aren't already on it
 │       (chezmoi never touches /etc/passwd on its own).
+├── run_onchange_after_50-dotagents-install.sh.tmpl
+│       Installs the dotagents CLI and runs `dotagents install`. Re-runs
+│       whenever `dot_agents/agents.toml` changes (its hash is embedded).
+├── dot_agents/                             → ~/.agents/
+│   └── agents.toml                         global agent skills (dotagents)
 ├── private_dot_pi/                         → ~/.pi/ (mode 0700)
 │   └── agent/
 │       ├── settings.json.tmpl              global Pi settings
 │       ├── extensions/                     local Pi extensions
-│       ├── skills/                         local Pi skills
+│       ├── skills/                         hand-written Pi skills (third-party
+│       │                                    skills go through dotagents)
 │       ├── prompts/                        local Pi prompt templates
 │       └── themes/                         local Pi themes
 └── dot_config/                             → ~/.config/
@@ -165,6 +171,35 @@ appropriate since it sits next to credentials).
   `mise exec node@lts -- npm install -g @earendil-works/pi-coding-agent`.
   Bump its `pi-revision:` comment to force a reinstall/upgrade on the next
   `chezmoi apply`.
+
+## Agent skills: dotagents
+
+Third-party agent skills are managed by
+[dotagents](https://github.com/getsentry/dotagents) (`@sentry/dotagents`) in
+its global scope, `~/.agents/`.
+
+- **Declaration:** `dot_agents/agents.toml` → `~/.agents/agents.toml`.
+  `agents = ["pi"]`; Pi reads `~/.agents/skills/` natively, so no Pi
+  settings are needed.
+- **Install:** `run_onchange_after_50-dotagents-install.sh.tmpl` npm-installs
+  the CLI via mise's node@lts and runs `dotagents --global install`. It
+  embeds a sha256 of `agents.toml`, so editing the skill list re-runs it on
+  the next `chezmoi apply`. Bump `dotagents-revision:` to force a re-run
+  (e.g. to pull newer versions of unpinned skills).
+- **Not tracked:** `~/.agents/skills/` (generated) and `~/.agents/agents.lock`.
+  `dotagents install` re-resolves unpinned sources to their latest commit and
+  rewrites the lock every time, so tracking it would cause constant
+  `chezmoi diff` drift. Pin a source with `source = "owner/repo@<sha>"` when
+  you need reproducibility.
+- **Plugin repos:** if a repo ships a Claude plugin manifest (e.g.
+  `mattpocock/skills`), `dotagents add` treats it as plugin-only and won't
+  find individual skills. Hand-write a `[[skills]]` entry with an explicit
+  `path = "skills/..."` instead.
+- **Editing via CLI:** after `dotagents add/remove`, run
+  `chezmoi re-add ~/.agents/agents.toml` to copy the change back here.
+- **CLI deps:** some skills are thin pointers to a CLI (e.g. `hunk-review`
+  needs `hunk`, declared in `dot_config/mise/config.toml`). Add such
+  dependencies alongside the skill.
 
 ## Known quirks
 

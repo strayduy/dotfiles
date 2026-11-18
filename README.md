@@ -17,6 +17,9 @@ My personal dotfiles, managed by [chezmoi](https://www.chezmoi.io/). Works on
 - **AI coding agent** — [Pi](https://pi.dev) global config under
   `private_dot_pi/agent/` (settings, custom skills/extensions/prompts/themes).
   Installed automatically via mise's node.
+- **Agent skills** — [dotagents](https://github.com/getsentry/dotagents)
+  installs third-party skills declared in `dot_agents/agents.toml` into
+  `~/.agents/skills/` (read natively by Pi).
 - **macOS extras** — [Aerospace](https://github.com/nikitabobko/AeroSpace)
   (tiling WM), [SketchyBar](https://github.com/FelixKratz/SketchyBar) (status
   bar), [JankyBorders](https://github.com/FelixKratz/JankyBorders).
@@ -52,6 +55,9 @@ chezmoi will:
    the language runtimes declared in `dot_config/mise/config.toml`.
 4. Run `run_once_after_30-install-pi.sh` — `npm install -g` the
    [Pi coding agent](https://pi.dev) using the mise-managed node.
+5. Run `run_once_after_40-set-default-shell.sh` — switch the login shell to zsh.
+6. Run `run_onchange_after_50-dotagents-install.sh` — install the dotagents
+   CLI and the skills in `~/.agents/agents.toml`.
 
 ## Day-to-day
 
@@ -107,6 +113,28 @@ Pi's global config lives at `~/.pi/agent/`, managed here as
 
 To upgrade Pi, bump the `pi-revision:` comment in
 `run_once_after_30-install-pi.sh.tmpl` and run `chezmoi apply`.
+
+## Managing agent skills
+
+Edit `dot_agents/agents.toml` and `chezmoi apply`; the dotagents script
+re-runs automatically when that file changes.
+
+```toml
+[[skills]]
+name = "find-bugs"
+source = "getsentry/skills"          # or "owner/repo@<sha>" to pin
+# path = "skills/..."               # needed for repos that ship a Claude plugin
+```
+
+Or use the CLI and copy the result back:
+
+```sh
+dotagents add getsentry/skills find-bugs
+chezmoi re-add ~/.agents/agents.toml
+```
+
+To refresh unpinned skills, run `dotagents install` (or bump
+`dotagents-revision:` in the script).
 
 ## Layout
 
