@@ -1,0 +1,54 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- /*
+  Pi global settings → ~/.pi/agent/settings.json.
+  Docs: docs/settings.md in the @earendil-works/pi-coding-agent npm package.
+
+  This is a chezmoi modify template, not a plain file, because Pi also
+  writes to settings.json at runtime (lastChangelogVersion,
+  extensionChangelogVersions, /model, /settings, ...). chezmoi reads the
+  current file on stdin, sets ONLY the leaf paths below, and keeps every
+  other key Pi wrote. So:
+    - keys listed here: this file wins on every `chezmoi apply`
+    - keys not listed here: Pi owns them
+  To make a change made inside Pi stick, copy it here too.
+
+  Set leaf paths (e.g. "compaction.enabled"), not whole objects, so Pi-only
+  nested keys survive. Do not switch to sprig's merge/mergeOverwrite: they
+  skip empty values, so false / 0 / [] would silently not override.
+
+  Paths in settings.json resolve relative to ~/.pi/agent.
+*/ -}}
+{{- $s := dict -}}
+{{- if .chezmoi.stdin | trim -}}
+{{-   $s = fromJson .chezmoi.stdin -}}
+{{- end -}}
+
+{{- $s = setValueAtPath "defaultProvider"      "anthropic"        $s -}}
+{{- $s = setValueAtPath "defaultModel"         "claude-opus-5-5"  $s -}}
+{{- $s = setValueAtPath "defaultThinkingLevel" "medium"           $s -}}
+
+{{- $s = setValueAtPath "theme" "tokyonight-storm" $s -}}
+
+{{- $s = setValueAtPath "compaction.enabled"          true  $s -}}
+{{- $s = setValueAtPath "compaction.reserveTokens"    16384 $s -}}
+{{- $s = setValueAtPath "compaction.keepRecentTokens" 20000 $s -}}
+
+{{- $s = setValueAtPath "retry.enabled"    true $s -}}
+{{- $s = setValueAtPath "retry.maxRetries" 3    $s -}}
+
+{{- /* Use the mise-managed node for any npm operations Pi performs
+       (package installs, git-package deps, etc.). */ -}}
+{{- $s = setValueAtPath "npmCommand" (list "mise" "exec" "node@lts" "--" "npm") $s -}}
+
+{{- $s = setValueAtPath "extensions" (list "extensions") $s -}}
+{{- $s = setValueAtPath "skills"     (list "skills")     $s -}}
+{{- $s = setValueAtPath "prompts"    (list "prompts")    $s -}}
+{{- $s = setValueAtPath "themes"     (list "themes")     $s -}}
+
+{{- $s = setValueAtPath "packages" (list) $s -}}
+
+{{- /* The old file's "//" comment keys were only documentation; drop them. */ -}}
+{{- $s = unset $s "//" -}}
+{{- $s = unset $s "//-" -}}
+
+{{- toPrettyJson $s -}}

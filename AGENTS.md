@@ -52,7 +52,7 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 │   └── agents.toml                         global agent skills (dotagents)
 ├── private_dot_pi/                         → ~/.pi/ (mode 0700)
 │   └── agent/
-│       ├── settings.json.tmpl              global Pi settings
+│       ├── modify_settings.json            global Pi settings (modify template)
 │       ├── extensions/                     local Pi extensions
 │       ├── skills/                         hand-written Pi skills (third-party
 │       │                                    skills go through dotagents)
@@ -158,9 +158,17 @@ We use [mise](https://mise.jdx.dev/dev-tools/) instead of `nvm`/`pyenv`/etc.
 as `private_dot_pi/agent/` (chezmoi `private_` keeps the dir at mode `0700`,
 appropriate since it sits next to credentials).
 
-- **Settings:** `private_dot_pi/agent/settings.json.tmpl` → `~/.pi/agent/settings.json`.
+- **Settings:** `private_dot_pi/agent/modify_settings.json` → `~/.pi/agent/settings.json`.
   Edit this file to change model defaults, theme, retry/compaction, etc.
   Paths inside it resolve relative to `~/.pi/agent`.
+  It is a chezmoi *modify template* (`chezmoi:modify-template`), not a plain
+  file, because Pi writes runtime state into the same file
+  (`lastChangelogVersion`, `/model`, `/settings`, ...). It reads the current
+  file and sets only the leaf paths it lists (those always win on apply);
+  every other key is left to Pi. Add settings with `setValueAtPath` per leaf,
+  not sprig `merge`/`mergeOverwrite` (they skip `false`/`0`/`[]`). Test with
+  `chezmoi diff ~/.pi/agent/settings.json`. No `.tmpl` suffix: that would
+  turn it into a modify *script*.
 - **Local resources:** drop custom extensions/skills/prompts/themes into the
   matching subdirectory; `settings.json` already lists each by name.
 - **Reusable bundles:** prefer publishing as an npm/git package and adding it

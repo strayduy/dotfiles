@@ -101,8 +101,9 @@ Then `chezmoi apply` — chezmoi notices the script changed and re-runs it.
 Pi's global config lives at `~/.pi/agent/`, managed here as
 `private_dot_pi/agent/`:
 
-- Edit `private_dot_pi/agent/settings.json.tmpl` for model defaults, theme,
-  retry/compaction, etc. See `docs/settings.md` in the
+- Edit `private_dot_pi/agent/modify_settings.json` for model defaults, theme,
+  retry/compaction, etc. It only sets the keys it lists and leaves keys Pi
+  writes itself (e.g. `lastChangelogVersion`) alone. See `docs/settings.md` in the
   `@earendil-works/pi-coding-agent` npm package for the full schema.
 - Drop custom extensions / skills / prompt templates / themes into the
   matching subdirectory — `settings.json` already references them by name.
