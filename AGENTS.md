@@ -61,12 +61,16 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 └── dot_config/                             → ~/.config/
     ├── zsh/
     │   ├── dot_zshrc                       → ~/.config/zsh/.zshrc
-    │   └── config/*.zsh                    sourced from .zshrc in lex order
-    │       ├── aliases.zsh                 personal + ported oh-my-zsh git aliases
-    │       ├── bun.zsh                     BUN_INSTALL / completions
-    │       ├── devtools.zsh                starship, zoxide (`j`)
-    │       └── mise.zsh                    `eval $(mise activate zsh)`
+    │   └── exact_config/NN-*.zsh           sourced from .zshrc in lex order; the
+    │       │                               two-digit prefix pins load order
+    │       │                               (exact_ so renamed files get removed)
+    │       ├── 00-mise.zsh                 `eval $(mise activate zsh)` (first, so
+    │       │                               mise-installed tools are on PATH)
+    │       ├── 01-bun.zsh                  BUN_INSTALL / completions
+    │       ├── 02-devtools.zsh             starship, zoxide (`j`), atuin
+    │       └── 03-aliases.zsh              personal + ported oh-my-zsh git aliases
     ├── mise/config.toml                   declarative list of language runtimes
+    ├── atuin/config.toml                   shell history (local-only, no sync)
     ├── exact_nvim/                         Neovim config (lua/, lsp/, lazy.nvim)
     ├── wezterm/wezterm.lua                 terminal emulator
     ├── starship.toml                       prompt
@@ -120,7 +124,7 @@ content changes (chezmoi tracks them by SHA256).
 
 We use [mise](https://mise.jdx.dev/dev-tools/) instead of `nvm`/`pyenv`/etc.
 
-- Activation lives in `dot_config/zsh/config/mise.zsh`.
+- Activation lives in `dot_config/zsh/exact_config/00-mise.zsh`.
 - Global tool versions are declared in `dot_config/mise/config.toml`
   (rendered to `~/.config/mise/config.toml`). Edit that file to add/remove
   runtimes; on the next `chezmoi apply` the bootstrap script will `mise

@@ -1,0 +1,41 @@
+# atuin configuration. Rendered to ~/.config/atuin/config.toml.
+# Docs: https://docs.atuin.sh/configuration/config/
+# Full list of options (with defaults):
+#   https://github.com/atuinsh/atuin/blob/main/crates/atuin-client/config.toml
+#
+# Only non-default or deliberately-pinned settings live here.
+
+## Sync: local-only history. Sync only ever happens after `atuin login`, but
+## turn it off explicitly so a stray login doesn't start uploading history.
+auto_sync = false
+
+## atuin is installed/upgraded by mise; don't nag about new releases.
+update_check = false
+
+## Key bindings installed by `atuin init zsh`: take over both Ctrl-R and the
+## Up arrow.
+bind_ctrl_r = true
+bind_up_arrow = true
+
+## Search UI.
+search_mode = "fuzzy"
+filter_mode = "global"
+## Up arrow only walks this shell's history; Ctrl-R still searches everything.
+filter_mode_shell_up_key_binding = "session"
+## auto: compact in small terminals, full otherwise.
+style = "auto"
+inline_height = 40
+show_preview = true
+
+## Enter runs the selected command immediately; Tab puts it on the prompt for
+## editing.
+enter_accept = true
+
+## Don't record commands that look like they contain secrets (AWS keys,
+## GitHub PATs, Slack/Stripe tokens, ...).
+secrets_filter = true
+
+[theme]
+## Built-ins: "default", "autumn", "marine". Custom themes go in
+## ~/.config/atuin/themes/NAME.toml.
+name = "default"
