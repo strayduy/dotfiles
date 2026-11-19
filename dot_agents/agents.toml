@@ -30,3 +30,12 @@ path = "skills/productivity/grill-me"
 [[skills]]
 name = "hunk-review"
 source = "modem-dev/hunk"
+
+# Plain-English / ASD-STE100 writing rules. Skill only: the upstream
+# Claude/Codex plugin's always-on SessionStart and lint hooks are not
+# installed for Pi. `path` is required because the repo ships plugin
+# manifests (.claude-plugin/, .codex-plugin/).
+[[skills]]
+name = "simple-english"
+source = "AminBlg/SimpleEnglish"
+path = "skills/simple-english"
