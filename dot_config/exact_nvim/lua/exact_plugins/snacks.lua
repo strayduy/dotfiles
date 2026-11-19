@@ -8,6 +8,12 @@ return {
             -- Based on snacks' "advanced" example, minus the `colorscript` and git status sections
             sections = {
                 { section = "header" },
+                -- Invisible spacer in the right pane, as tall as the header (+2
+                -- padding added by the header section), so both panes line up.
+                function(self)
+                    local height = #vim.split(self.opts.preset.header, "\n") + 2
+                    return { pane = 2, text = "", padding = height - 1 }
+                end,
                 { section = "keys", gap = 1, padding = 1 },
                 { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
                 { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
