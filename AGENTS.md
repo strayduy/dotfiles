@@ -212,5 +212,10 @@ its global scope, `~/.agents/`.
   a new shell after bootstrap.
 - The Ubuntu installer symlinks `fdfind`→`fd` and `batcat`→`bat` into
   `~/.local/bin` because Debian renames those binaries.
+- chezmoi's `exact_` prefix is **not** recursive: only the prefixed directory
+  itself is pruned. That's why the nvim plugin dir is
+  `exact_nvim/lua/exact_plugins/` (so deleted plugin specs get removed).
+  lazy.nvim's `lazy-lock.json` is listed in `.chezmoiignore` so the
+  `exact_nvim` prune doesn't delete it.
 - On Ubuntu, neovim is installed from the upstream AppImage (apt's nvim is
   usually too old for the lua/lazy.nvim config in `exact_nvim/`).

@@ -5,6 +5,7 @@ return {
     ---@type snacks.Config
     opts = {
         dashboard = { example = "advanced" },
+        explorer = { enabled = true }, -- also replaces netrw
         indent = { char = "┊", scope = { char = "┊" } },
         notifier = { enabled = true },
         picker = {
@@ -19,6 +20,31 @@ return {
         words = { enabled = true },
     },
     keys = {
+        -- file explorer
+        {
+            "<Leader>ee",
+            function()
+                Snacks.explorer()
+            end,
+            desc = "Toggle file [E]xplorer",
+        },
+        {
+            "<Leader>ef",
+            function()
+                Snacks.explorer.reveal()
+            end,
+            desc = "Reveal current [F]ile in file [E]xplorer",
+        },
+        {
+            "<Leader>eq",
+            function()
+                local explorer = Snacks.picker.get({ source = "explorer" })[1]
+                if explorer then
+                    explorer:close()
+                end
+            end,
+            desc = "File [E]xplorer [Q]uit",
+        },
         {
             "<Leader>lg",
             function()

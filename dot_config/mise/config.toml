@@ -14,6 +14,8 @@ rust   = "latest"
 # CLI tools
 # hunk: diff review TUI; required by the `hunk-review` agent skill.
 "github:modem-dev/hunk" = "latest"
+# tree-sitter: CLI required by nvim-treesitter (main branch) to build parsers.
+tree-sitter = "latest"
 
 [settings]
 # Don't prompt when installing new tool versions during automated bootstraps.

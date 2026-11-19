@@ -7,7 +7,7 @@ return {
                 nvim_diagnostics = "nvim_lsp",
                 offsets = {
                     {
-                        filetype = "NvimTree",
+                        filetype = "snacks_layout_box", -- snacks explorer sidebar
                         text = "File Explorer",
                         highlight = "Directory",
                         text_align = "left",
