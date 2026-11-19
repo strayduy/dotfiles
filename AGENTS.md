@@ -64,7 +64,7 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
     │   └── config/*.zsh                    sourced from .zshrc in lex order
     │       ├── aliases.zsh                 personal + ported oh-my-zsh git aliases
     │       ├── bun.zsh                     BUN_INSTALL / completions
-    │       ├── devtools.zsh                starship, zoxide (`j`), shell-color-scripts
+    │       ├── devtools.zsh                starship, zoxide (`j`)
     │       └── mise.zsh                    `eval $(mise activate zsh)`
     ├── mise/config.toml                   declarative list of language runtimes
     ├── exact_nvim/                         Neovim config (lua/, lsp/, lazy.nvim)
