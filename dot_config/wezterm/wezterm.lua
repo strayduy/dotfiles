@@ -18,12 +18,21 @@ config.leader = {
 	timeout_milliseconds = 1000,
 }
 
--- When herdr is the foreground process, pass the prefix + key through
--- to herdr instead of letting wezterm handle it.
+-- When herdr is in the foreground, pass the prefix + key through to herdr
+-- instead of letting wezterm handle it. Locally we can see the process name;
+-- over SSH we rely on the IN_HERDR user var set by zsh
+-- (zsh/exact_config/05-wezterm-herdr.zsh).
+local function herdr_active(pane)
+	if pane:get_user_vars().IN_HERDR == "1" then
+		return true
+	end
+	local proc = pane:get_foreground_process_name() or ""
+	return proc:find("herdr") ~= nil
+end
+
 local function conditional_leader_action(wezterm_action, key)
 	return wezterm.action_callback(function(window, pane)
-		local proc = pane:get_foreground_process_name() or ""
-		if proc:find("herdr") then
+		if herdr_active(pane) then
 			window:perform_action(act.SendKey({ key = "a", mods = "CTRL" }), pane)
 			window:perform_action(act.SendKey({ key = key }), pane)
 		else

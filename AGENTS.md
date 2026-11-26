@@ -67,9 +67,12 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
     │       ├── 01-bun.zsh                  BUN_INSTALL / completions
     │       ├── 02-devtools.zsh             starship, zoxide (`j`), atuin
     │       ├── 03-aliases.zsh              personal + ported oh-my-zsh git aliases
-    │       └── 04-ssh-agent.zsh            over SSH, use ~/.ssh/agent.sock (kept
-    │                                       current by /etc/ssh/sshrc) so herdr/tmux
-    │                                       panes survive reconnects
+    │       ├── 04-ssh-agent.zsh            over SSH, use ~/.ssh/agent.sock (kept
+    │       │                               current by /etc/ssh/sshrc) so herdr/tmux
+    │       │                               panes survive reconnects
+    │       └── 05-wezterm-herdr.zsh        sets WezTerm user var IN_HERDR while
+    │                                       herdr runs, so the CTRL+a leader passes
+    │                                       through to herdr over SSH too
     ├── mise/config.toml                   declarative list of language runtimes
     ├── atuin/config.toml                   shell history (local-only, no sync)
     ├── herdr/config.toml                   herdr agent workspace (binary via mise;
