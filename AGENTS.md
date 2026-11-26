@@ -71,6 +71,9 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
     │       └── 03-aliases.zsh              personal + ported oh-my-zsh git aliases
     ├── mise/config.toml                   declarative list of language runtimes
     ├── atuin/config.toml                   shell history (local-only, no sync)
+    ├── herdr/config.toml                   herdr agent workspace (binary via mise;
+    │                                        herdr may rewrite this file, so
+    │                                        `chezmoi re-add` after UI changes)
     ├── exact_nvim/                         Neovim config (lua/, lsp/, lazy.nvim)
     ├── wezterm/wezterm.lua                 terminal emulator
     ├── starship.toml                       prompt

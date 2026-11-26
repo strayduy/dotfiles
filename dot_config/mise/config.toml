@@ -19,6 +19,10 @@ tree-sitter = "latest"
 # atuin: SQLite-backed shell history (Ctrl-R / Up). Shell hook lives in
 # ~/.config/zsh/config/02-devtools.zsh; config in ~/.config/atuin/.
 atuin = "latest"
+# herdr: terminal workspace/runtime for coding agents (https://herdr.dev).
+# Upgrade with `mise up`, not `herdr update` (that would overwrite the
+# mise-managed binary in place).
+"github:herdrdev/herdr" = "latest"
 
 [settings]
 # Don't prompt when installing new tool versions during automated bootstraps.
