@@ -18,23 +18,37 @@ config.leader = {
 	timeout_milliseconds = 1000,
 }
 
+-- When herdr is the foreground process, pass the prefix + key through
+-- to herdr instead of letting wezterm handle it.
+local function conditional_leader_action(wezterm_action, key)
+	return wezterm.action_callback(function(window, pane)
+		local proc = pane:get_foreground_process_name() or ""
+		if proc:find("herdr") then
+			window:perform_action(act.SendKey({ key = "a", mods = "CTRL" }), pane)
+			window:perform_action(act.SendKey({ key = key }), pane)
+		else
+			window:perform_action(wezterm_action, pane)
+		end
+	end)
+end
+
 config.keys = {
 	-- Create tab pane
 	{
 		key = "c",
 		mods = "LEADER",
-		action = act.SpawnTab("CurrentPaneDomain"),
+		action = conditional_leader_action(act.SpawnTab("CurrentPaneDomain"), "c"),
 	},
 	-- Navigate tab panes
 	{
 		key = "n",
 		mods = "LEADER",
-		action = act.ActivateTabRelative(1),
+		action = conditional_leader_action(act.ActivateTabRelative(1), "n"),
 	},
 	{
 		key = "p",
 		mods = "LEADER",
-		action = act.ActivateTabRelative(-1),
+		action = conditional_leader_action(act.ActivateTabRelative(-1), "p"),
 	},
 	-- Rename tab pane
 	{
