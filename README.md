@@ -11,7 +11,8 @@ My personal dotfiles, managed by [chezmoi](https://www.chezmoi.io/). Works on
 - **Editor** — [Neovim](https://neovim.io/) with `lazy.nvim` + LSP configs
   under `dot_config/exact_nvim/`.
 - **Terminal** — [WezTerm](https://wezfurlong.org/wezterm/) (`dot_config/wezterm/`).
-- **Multiplexer** — `tmux.conf`.
+- **Multiplexer** — herdr agent workspace (`dot_config/herdr/`). tmux is
+  still installed, without a custom config, for occasional use.
 - **Runtimes** — [mise](https://mise.jdx.dev/) manages Node, Python, Bun, etc.
   Tools are declared in `dot_config/mise/config.toml`.
 - **AI coding agent** — [Pi](https://pi.dev) global config under

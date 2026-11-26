@@ -32,8 +32,6 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 ├── AGENTS.md
 ├── README.md
 ├── dot_zshenv                              → ~/.zshenv (sets ZDOTDIR)
-├── tmux.conf                               (not currently managed by chezmoi;
-│                                            see "Known quirks" below)
 ├── run_once_before_10-install-packages.sh.tmpl
 │       OS-dispatched installer for system packages. Uses Homebrew on macOS
 │       and apt + upstream installers on Ubuntu/Debian.
@@ -87,7 +85,7 @@ Docs: <https://www.chezmoi.io/reference/source-state-attributes/>.
 - **macOS-only configs:** `aerospace/`, `borders/`, `sketchybar/`. These are
   harmless on Linux because the apps don't exist there, but the install script
   only installs them via Homebrew casks on `darwin`.
-- **Everything else** (zsh, nvim, wezterm, starship, tmux) is cross-platform.
+- **Everything else** (zsh, nvim, wezterm, starship, herdr) is cross-platform.
 
 If you add Linux-specific or macOS-specific config, prefer a `.tmpl` with
 `{{ if eq .chezmoi.os "darwin" }} ... {{ end }}` over forking files.
@@ -218,9 +216,6 @@ its global scope, `~/.agents/`.
 
 ## Known quirks
 
-- `tmux.conf` at the repo root is **not** named with a `dot_` prefix, so
-  chezmoi will not place it at `~/.tmux.conf`. If that's intentional (e.g.
-  it's a reference copy), leave it; otherwise rename to `dot_tmux.conf`.
 - `dot_zshenv` puts `$PATH=$PATH:$HOME/.local/bin:...`. Some installers
   (mise, chezmoi, starship on Linux) drop binaries in `~/.local/bin`, so
   shells started before the first `chezmoi apply` may not see them — open
