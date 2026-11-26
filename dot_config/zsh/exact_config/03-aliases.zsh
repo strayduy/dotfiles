@@ -9,6 +9,7 @@ alias md="mkdir -p"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias hd='hunk diff origin/master...HEAD'
 
 #
 # Git helper functions (ported from oh-my-zsh git plugin)
