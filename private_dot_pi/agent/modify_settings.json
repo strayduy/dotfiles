@@ -29,6 +29,11 @@
 
 {{- $s = setValueAtPath "theme" "tokyonight-storm" $s -}}
 
+{{- /* Keep the default tools (read, bash, edit, write) and add codemode:
+       JS scripts that call other tools in parallel and filter output.
+       Docs: docs/codemode.md, docs/cli.md#enable-codemode. */ -}}
+{{- $s = setValueAtPath "defaultTools" (list "+codemode") $s -}}
+
 {{- $s = setValueAtPath "compaction.enabled"          true  $s -}}
 {{- $s = setValueAtPath "compaction.reserveTokens"    16384 $s -}}
 {{- $s = setValueAtPath "compaction.keepRecentTokens" 20000 $s -}}
